@@ -8,10 +8,10 @@ var
 gulp.task('browserSync', function() {
   browserSync({
     files: ['views/**', 'public/**'],
-    proxy: 'dillinger.io:8090',
+    proxy: 'localhost:8090',
     notify: true,
-    port: 80,
-    host: 'dillinger.io',
+    port: 8889,
+    host: 'localhost',
     open: 'external'
   });
 });

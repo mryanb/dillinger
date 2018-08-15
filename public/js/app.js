@@ -8,7 +8,7 @@
   // jQuery
   window.jQuery = require('jquery'),
   require('jquery-ui-bundle/jquery-ui.js'),
-  require('inverseresize/alsoResizeReverse/alsoResizeInverse'); 
+  require('inverseresize/alsoResizeReverse/alsoResizeInverse');
 
   // AngularJS
   angular = require('exports?angular!angular');
@@ -52,6 +52,11 @@
   require('./plugins/github/github-modal.controller');
   require('./plugins/github/github.controller');
 
+  // Plugin: Gitlab
+  require('./plugins/gitlab/gitlab.service');
+  require('./plugins/gitlab/gitlab-modal.controller');
+  require('./plugins/gitlab/gitlab.controller');
+
   // Plugin: Dropbox
   require('./plugins/dropbox/dropbox.service');
   require('./plugins/dropbox/dropbox-modal.controller');
@@ -94,6 +99,7 @@
     'diFileImport',
     'plugins.bitbucket',
     'plugins.github',
+    'plugins.gitlab',
     'plugins.dropbox',
     'plugins.medium',
     'plugins.googledrive',

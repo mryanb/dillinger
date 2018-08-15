@@ -6,6 +6,7 @@ var path = require('path')
   , Dropbox = require( path.resolve(__dirname, '../plugins/dropbox/dropbox.js') ).Dropbox
   , Bitbucket = require( path.resolve(__dirname, '../plugins/bitbucket/bitbucket.js') ).Bitbucket
   , Github = require( path.resolve(__dirname, '../plugins/github/github.js') ).Github
+  , Gitlab = require( path.resolve(__dirname, '../plugins/gitlab/gitlab.js') ).Gitlab
   , Medium = require( path.resolve(__dirname, '../plugins/medium/medium.js') ).Medium
   , GoogleDrive = require('../plugins/googledrive/googledrive.js').GoogleDrive
   , OneDrive = require('../plugins/onedrive/onedrive.js').OneDrive
@@ -21,6 +22,7 @@ exports.index = function(req, res) {
     isDropboxAuth: !!req.session.isDropboxSynced,
     isBitbucketAuth: !!req.session.isBitbucketSynced,
     isGithubAuth: !!req.session.isGithubSynced,
+    isGitlabAuth: !!req.session.isGitlabSynced,
     isMediumAuth: !!req.session.isMediumSynced,
     isEvernoteAuth: !!req.session.isEvernoteSynced,
     isGoogleDriveAuth: !!req.session.isGoogleDriveSynced,
@@ -28,6 +30,7 @@ exports.index = function(req, res) {
     isDropboxConfigured: Dropbox.isConfigured,
     isBitbucketConfigured: Bitbucket.isConfigured,
     isGithubConfigured: Github.isConfigured,
+    isGitlabConfigured: Gitlab.isConfigured,
     isMediumConfigured: Medium.isConfigured,
     isGoogleDriveConfigured: GoogleDrive.isConfigured,
     isOneDriveConfigured: OneDrive.isConfigured,
@@ -41,6 +44,9 @@ exports.index = function(req, res) {
 
   // Capture github username for the future...
   if (req.session.github && req.session.github.username) indexConfig.github_username = req.session.github.username
+
+  // Capture gitlab username for the future...
+  if (req.session.gitlab && req.session.gitlab.username) indexConfig.gitlab_username = req.session.gitlab.username
 
   // If GA is enabled, let's create the HTML and tracking
   if (GoogleAnalytics.isConfigEnabled){

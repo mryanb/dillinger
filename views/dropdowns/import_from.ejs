@@ -37,6 +37,19 @@
   </li>
   <% } %>
 
+  <% if (isGitlabConfigured) { %>
+  <li ng-controller="Gitlab as gitlab">
+    <% if (isGitlabAuth) { %>
+      <a class="import-gitlab linked" ng-click="gitlab.importFile('<%= gitlab_username %>')">
+    <% } else { %>
+      <a class="import-gitlab unlinked" ng-click="gitlab.chooseScope()">
+    <% } %>
+      <span>Gitlab</span>
+      <span class="icon icon-link"><%- include ../icons/linked %></span>
+    </a>
+  </li>
+  <% } %>
+
   <% if (isGoogleDriveConfigured) { %>
   <li ng-controller="Googledrive as googledrive">
     <% if (isGoogleDriveAuth) { %>
